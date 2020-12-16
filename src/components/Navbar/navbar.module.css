@@ -1,0 +1,22 @@
+header.appbar {
+  background-color: white;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(196, 205, 213, 0.3);
+}
+.heading, button.iconbutton {
+  color: black;
+}
+button.iconbutton {
+  margin: 0 10px;
+}
+
+button.button {
+  margin-left: auto;
+  background-color: rgba(39,137,233,1);
+  color: white;
+  text-transform: capitalize;
+}
+button.button:hover {
+  background-color: rgba(39,137,233,.8);
+  color: white;
+}

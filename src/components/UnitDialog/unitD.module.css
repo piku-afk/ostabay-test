@@ -1,0 +1,53 @@
+div.container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+div.formControl {
+  margin-bottom: 4%;
+}
+
+p.subHeading {
+  margin-bottom: 1.5%;
+}
+
+label.label, label.imagesLabel {
+  color: #5A6679;
+  margin-bottom: .5%;
+  margin-right: auto;
+}
+input.input:active{
+  /* outline-color: rgba(39,137,233,1); */
+  outline-color: red;
+}
+
+div.map {
+  width: 100%;
+  height: 275px;
+  margin: 3% 0;
+}
+
+button.imagesButton {
+  float: right;
+}
+div.images {
+  width: 100%;
+  height: 200px;
+  margin: 5% 0;
+}
+button.imagesRemove {
+  text-transform: capitalize;
+  margin-right: auto;
+  padding: 0;
+  color:  red;
+}
+
+button.button:first-child {
+  background-color: rgba(39,137,233,1);
+  color: white;
+  text-transform: capitalize;
+}
+button.button:last-child {
+  margin-right: auto;
+  text-transform: capitalize;
+}
