@@ -1,12 +1,14 @@
 import styles from './unitD.module.css';
+import map from './image 8.png';
 
 import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 
@@ -29,9 +31,9 @@ export default function Map({current, changeCurrent}) {
       <FormControl className={styles.formControl} size='small' fullWidth variant='outlined'>
         <Typography className={styles.label} component='label' htmlFor='location' variant='body2'>Search a location</Typography>
         <OutlinedInput inputProps={{className: styles.input}} id='location' />
-        <Paper className={styles.map} elevation={1}>
-          insert map here
-        </Paper>
+        <Card className={styles.map}>
+          <CardMedia component='img' src={map} />
+        </Card>
         <Typography className={styles.subHeading} variant='body1'>
           Nearest / Preferred Port
         </Typography>
