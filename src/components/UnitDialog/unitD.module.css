@@ -27,21 +27,36 @@ div.map {
   margin: 3% 0;
 }
 
-button.imagesButton {
+/*************************
+  Images
+*************************/
+label.imagesLabel {
+  margin-top: 10px;
+}
+span.imagesButton {
   float: right;
 }
 div.images {
-  width: 100%;
-  height: 200px;
   margin: 5% 0;
+}
+input.upload {
+  display: none;
+}
+div.imagesContainer {
+  max-height: 69vh;
+  margin-top: 5%;
+  overflow-y: auto;
 }
 button.imagesRemove {
   text-transform: capitalize;
-  margin-right: auto;
+  margin-left: auto;
   padding: 0;
   color:  red;
 }
 
+/*************************
+  Dialog Actions
+*************************/
 button.button:first-child {
   background-color: rgba(39,137,233,1);
   color: white;

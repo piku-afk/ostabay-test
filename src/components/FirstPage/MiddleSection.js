@@ -6,9 +6,9 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,6 +16,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 
 import AddIcon from '@material-ui/icons/Add';
+import ImageDialog from "../ImageDialog.js/ImageDialog";
 
 const data = [
   {
@@ -69,8 +70,10 @@ const emptyData = {
 export default function MiddleSection() {
   const [units, setUnits] = useState(data);
   const [open, setOpen] = useState(false);
+  const [openImage, setOpenImage] = useState(false);
   const [isNew, setIsNew] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState();
+  const [selectedImage, setSelectedImage] = useState();
 
   function handleOpen(unit) {
     setSelectedUnit(unit);
@@ -80,6 +83,14 @@ export default function MiddleSection() {
     setSelectedUnit(emptyData);
     setIsNew(true);
     setOpen(true);
+  }
+  function handleOpenImage(img) {
+    setSelectedImage(img);
+    setOpenImage(true);
+  }
+  function handleCloseImage() {
+    setOpenImage(false);
+    setSelectedImage('');
   }
   function handleClose() {
     setOpen(false);
@@ -117,26 +128,34 @@ export default function MiddleSection() {
         <Button className={styles.addButton} variant='outlined' onClick={handleOpenNew} startIcon={<AddIcon />}>Add Unit</Button>
       </Grid>
       <Grid container>
-        {units.map(unit => <UnitCard key={unit.id} unit={unit} handleOpen={handleOpen} handleDelete={handleDelete} />)}
+        {units.map(unit => <UnitCard key={unit.id} unit={unit} handleOpen={handleOpen} handleDelete={handleDelete} handleOpenImage={handleOpenImage} />)}
       </Grid>
-      <UnitDialog selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} open={open} handleClose={handleClose} handleSave={handleSave} isNew={isNew} handleNewSave={handleNewSave} />
+      <UnitDialog selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} open={open} handleClose={handleClose} handleSave={handleSave} isNew={isNew} handleNewSave={handleNewSave} handleOpenImage={handleOpenImage} />
+      <ImageDialog image={selectedImage} open={openImage} handleCloseImage={handleCloseImage} />
     </Container>
   )
 }
 
-function UnitCard({unit, handleOpen, handleDelete}) {
+function UnitCard({unit, handleOpen, handleDelete, handleOpenImage}) {
 
   function selectUnit() {
     handleOpen(unit);
+  }
+  function handleClick() {
+    handleOpenImage('https://images.pexels.com/photos/1561020/pexels-photo-1561020.jpeg?crop=entropy&cs=srgb&dl=pexels-zaksheuskaya-1561020.jpg&fit=crop&fm=jpg&h=640&w=640');
   }
 
   return (
     <Grid item xs={5}>
       <Card className={styles.card}>
         <CardContent>
-          <Grid className={styles.imageContainer} container>
-            {[1,2,3,4].map(item => {              
-              return <Paper key={item} className={styles.unitImage}></Paper>
+          <Grid className={styles.imageContainer} container justify='space-between'>
+            {[1,2,3,4].map(item => {     
+              return (
+                <Card key={item} className={styles.unitImage}>
+                  <CardMedia className='onClick' onClick={handleClick} component='img' src='https://images.pexels.com/photos/1561020/pexels-photo-1561020.jpeg?crop=entropy&cs=srgb&dl=pexels-zaksheuskaya-1561020.jpg&fit=crop&fm=jpg&h=640&w=640' />
+                </Card>
+              )
             })}
           </Grid>
           <Typography className={styles.unitName} component='p' variant='h6'>{unit.name}</Typography> • {' '}

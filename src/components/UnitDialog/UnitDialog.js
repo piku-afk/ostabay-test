@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 
-export default function UnitDialog({selectedUnit, setSelectedUnit, open, handleSave, handleClose, isNew, handleNewSave}) {
+export default function UnitDialog({selectedUnit, setSelectedUnit, open, handleSave, handleClose, isNew, handleNewSave, handleOpenImage}) {
   function changeCurrent(e) {
     setSelectedUnit(prev => {
       return {...prev, [e.target.name]: e.target.value}
@@ -33,7 +33,7 @@ export default function UnitDialog({selectedUnit, setSelectedUnit, open, handleS
   return(
     <Dialog fullWidth maxWidth='lg' open={open} onClose={handleClose}>
       <Container className={styles.container}>
-        <form>
+        <form className={styles.form}>
           <Typography component='p' className={styles.subHeading} variant='h6'>
             Factory / Wharehouse
           </Typography>
@@ -45,7 +45,7 @@ export default function UnitDialog({selectedUnit, setSelectedUnit, open, handleS
               <Map current={selectedUnit} changeCurrent={changeCurrent} />
             </Grid>
             <Grid item xs={2}>
-              <Images />
+              <Images handleOpenImage={handleOpenImage} />
             </Grid>
           </Grid>
           <DialogActions className={styles.dialogActions}>
